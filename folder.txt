@@ -1,0 +1,21 @@
+savitrimart-folder/
+├── index.html
+├── gallery.html
+│
+├── main.css
+├── gallery.css
+│   
+├── main.js
+├── contact.js
+├── gallery.js
+│ 		
+├── Savitri-logo.png
+├── Savitriicon1.png
+├── [all other images]
+│  
+├── SavitriMart1.mp4
+├── SavitriMart2.mp4
+│   
+├── robots.txt
+├── sw.js
+└── offline.html

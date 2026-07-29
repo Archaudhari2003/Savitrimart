@@ -1,0 +1,16 @@
+# સાવિત્રી માર્ટ ધાનેરા માટે Robots.txt
+# www.savitrimart-dhanera.com
+
+User-agent: *
+Allow: /
+Disallow: /Assets/private/
+Disallow: /admin/
+
+# Sitemap સ્થાન
+Sitemap: https://savitrimart-dhanera.com/sitemap.xml
+
+# ક્રોલ ડિલે (સર્વર માટે આદર રાખો)
+Crawl-delay: 1
+
+# ક્લીન પેરામીટર્સ સ્પષ્ટ કરો
+Clean-param: utm_source&utm_medium&utm_campaign
