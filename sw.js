@@ -1,20 +1,22 @@
 /**
  * SavitriMart Service Worker
  * Provides basic offline support and caching
- * Version: 1.0.0
+ * Version: 1.0.1
  */
 
-const CACHE_NAME = 'savitrimart-v1';
+const CACHE_NAME = 'savitrimart-v2';
+
+// Automatically detect whether it's running on GitHub Pages (/Savitrimart/) or local root (/)
+const BASE = self.location.pathname.includes('/Savitrimart/') ? '/Savitrimart' : '';
+
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/gallery.html',
-    '/main.css',
-    '/gallery.css',
-    '/main.js',
-    '/contact.js',
-    '/gallery.js',
-    '/offline.html'
+    `${BASE}/`,
+    `${BASE}/index.html`,
+    `${BASE}/gallery.html`,
+    `${BASE}/main.css`,
+    `${BASE}/main.js`,
+    `${BASE}/contact.js`,
+    `${BASE}/offline.html`
 ];
 
 // Install event - cache core assets
@@ -95,8 +97,8 @@ self.addEventListener('fetch', event => {
                     })
                     .catch(() => {
                         // If fetch fails (offline), return offline page for HTML requests
-                        if (event.request.headers.get('accept').includes('text/html')) {
-                            return caches.match('/offline.html');
+                        if (event.request.headers.get('accept')?.includes('text/html')) {
+                            return caches.match(`${BASE}/offline.html`);
                         }
                         
                         // Return a simple error response for other resources
@@ -112,7 +114,7 @@ self.addEventListener('fetch', event => {
     );
 });
 
-// Background sync for form submissions (optional)
+// Background sync for form submissions
 self.addEventListener('sync', event => {
     if (event.tag === 'contact-form-sync') {
         event.waitUntil(syncContactForms());
@@ -120,6 +122,5 @@ self.addEventListener('sync', event => {
 });
 
 async function syncContactForms() {
-    // Implementation for offline form submission sync
     console.log('Syncing offline contact forms...');
 }

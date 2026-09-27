@@ -523,6 +523,17 @@
 <script src="main.js" defer></script>
 <script src="contact.js" defer></script>
 
+<!-- Add this Service Worker registration script -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js')
+        .then((reg) => console.log('Service Worker registered successfully:', reg.scope))
+        .catch((err) => console.error('Service Worker registration error:', err));
+    });
+  }
+</script>
+
 <!-- ================= ANALYTICS (Privacy-friendly) ================= -->
 <script defer src="https://plausible.io/js/script.js" data-domain="savitrimart-dhanera.com"></script>
 
